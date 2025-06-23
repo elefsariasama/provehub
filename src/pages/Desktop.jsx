@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import "../styles.css"; // untuk animasi glow
 
 export default function Desktop() {
   const [username, setUsername] = useState("");
+  const [glow, setGlow] = useState(true);
 
   useEffect(() => {
     const stored = localStorage.getItem("username");
@@ -10,40 +12,55 @@ export default function Desktop() {
     } else {
       setUsername(stored);
     }
+
+    // Stop animasi glow setelah 5 detik
+    const timer = setTimeout(() => setGlow(false), 5000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="h-screen w-screen bg-[url('https://wallpapercave.com/wp/wp8784260.jpg')] bg-cover bg-center relative overflow-hidden">
-      {/* Taskbar */}
-      <div className="absolute bottom-0 left-0 w-full flex items-center justify-center gap-6 py-2 backdrop-blur-md bg-white/30 shadow-lg rounded-t-xl">
-        {/* X Link */}
+    <div className="h-screen w-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] flex flex-col items-center justify-center relative overflow-hidden">
+      {/* Logo di tengah */}
+      <img
+        src="/logo-energi.png"
+        alt="Logo Energi"
+        className={`w-52 h-52 mb-8 ${glow ? "animate-glow" : ""}`}
+      />
+
+      {/* Taskbar (dock) */}
+      <div className="absolute bottom-0 left-0 w-full flex items-center justify-center gap-6 py-3 backdrop-blur-md bg-white/10 shadow-inner">
+        {/* X Profile */}
         <a
-          href="https://x.com/succinct" // ganti ke profil X Succinct
+          href="https://x.com/succinct"
           target="_blank"
+          rel="noopener noreferrer"
           className="hover:scale-110 transition"
         >
-          <img src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="X" className="w-8 h-8" />
+          <img
+            src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png"
+            alt="X"
+            className="w-7 h-7"
+          />
         </a>
 
-        {/* Discord Link */}
+        {/* Discord */}
         <a
-          href="https://discord.gg/succinct" // ganti ke link Discord Succinct
+          href="https://discord.gg/succinct"
           target="_blank"
+          rel="noopener noreferrer"
           className="hover:scale-110 transition"
         >
-          <img src="https://cdn.worldvectorlogo.com/logos/discord-6.svg" alt="Discord" className="w-8 h-8" />
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png"
+            alt="Discord"
+            className="w-7 h-7"
+          />
         </a>
 
-        {/* Username */}
-        <div className="text-white text-sm bg-black/40 px-4 py-1 rounded-full font-mono">
+        {/* Username Display */}
+        <span className="text-white text-sm bg-black/40 px-4 py-1 rounded-full font-mono">
           👤 {username}
-        </div>
-      </div>
-
-      {/* Desktop area (kosong dulu, nanti untuk game icons) */}
-      <div className="p-4 pt-6 text-white">
-        <h1 className="text-2xl font-bold drop-shadow-lg">Welcome, {username}!</h1>
-        <p className="drop-shadow-md">Your MacOS-like desktop is ready 😎</p>
+        </span>
       </div>
     </div>
   );
