@@ -2,21 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes energy-glow {
-  0% {
-    filter: drop-shadow(0 0 0px #ff00ff);
-    transform: scale(1);
-  }
-  50% {
-    filter: drop-shadow(0 0 20px #ff00ff);
-    transform: scale(1.05);
-  }
-  100% {
-    filter: drop-shadow(0 0 0px #ff00ff);
-    transform: scale(1);
-  }
+/* Custom pink cursor */
+.cursor-pink {
+  cursor: url('https://cur.cursors-4u.net/holidays/hol-9/hol816.cur'), auto;
 }
 
+/* Glowing logo animation */
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 0px #ff69b4); }
+  50% { filter: drop-shadow(0 0 10px #ff69b4); }
+}
 .animate-glow {
-  animation: energy-glow 1s ease-in-out infinite;
+  animation: glow 2s ease-in-out infinite;
 }
