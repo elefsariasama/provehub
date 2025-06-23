@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import QuickMath from "../components/QuickMath";
 import CatClicker from "../components/CatClicker";
-import FlappyBird from "../components/FlappyBird";
-import MiniMario from "../components/MiniMario";
 
 export default function Desktop() {
   const [username, setUsername] = useState("");
@@ -19,7 +17,7 @@ export default function Desktop() {
 
   return (
     <div className="w-full h-screen bg-gradient-to-br from-pink-100 to-indigo-200 cursor-pink relative overflow-hidden">
-      {/* Logo tengah */}
+      {/* Logo tengah dengan animasi glow */}
       <img
         src="/logo-energi.png"
         alt="logo"
@@ -47,24 +45,6 @@ export default function Desktop() {
             alt="CatClicker"
           />
           <span>CatClicker</span>
-        </div>
-
-        {/* Flappy */}
-        <div className="desktop-icon" onClick={() => setActiveGame("flappy")}>
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/1020/1020266.png"
-            alt="Flappy"
-          />
-          <span>Flappy</span>
-        </div>
-
-        {/* Mario */}
-        <div className="desktop-icon" onClick={() => setActiveGame("mario")}>
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/999/999772.png"
-            alt="Mario"
-          />
-          <span>Mario</span>
         </div>
       </div>
 
@@ -108,16 +88,6 @@ export default function Desktop() {
       {activeGame === "cat" && (
         <div className="game-window">
           <CatClicker onClose={() => setActiveGame(null)} />
-        </div>
-      )}
-      {activeGame === "flappy" && (
-        <div className="game-window">
-          <FlappyBird onClose={() => setActiveGame(null)} />
-        </div>
-      )}
-      {activeGame === "mario" && (
-        <div className="game-window">
-          <MiniMario onClose={() => setActiveGame(null)} />
         </div>
       )}
     </div>
