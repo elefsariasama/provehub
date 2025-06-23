@@ -62,4 +62,35 @@ export default function Desktop() {
       {activeGame === "math" && <QuickMath onClose={() => setActiveGame(null)} />}
 
       {/* Taskbar */}
-      <div className="absolute bottom-0 left-0 w-full flex items-center justify-center gap-6 py-3 backdrop-blur-md bg-white/10 shadow
+      <div className="absolute bottom-0 left-0 w-full flex items-center justify-center gap-6 py-3 backdrop-blur-md bg-white/10 shadow-inner">
+        <a
+          href="https://x.com/succinct"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:scale-110 transition"
+        >
+          <img
+            src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png"
+            alt="X"
+            className="w-7 h-7"
+          />
+        </a>
+        <a
+          href="https://discord.gg/succinct"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:scale-110 transition"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png"
+            alt="Discord"
+            className="w-7 h-7"
+          />
+        </a>
+        <span className="text-white text-sm bg-black/40 px-4 py-1 rounded-full">
+          👤 {username}
+        </span>
+      </div>
+    </div>
+  );
+}
