@@ -16,29 +16,23 @@ export default function Desktop() {
   }, []);
 
   return (
-    <div className="w-full h-screen bg-gradient-to-br from-pink-100 to-indigo-200 cursor-pink relative overflow-hidden">
-      {/* Logo tengah dengan animasi glow */}
+    <div className="w-full h-screen bg-gradient-to-br from-[#fce4ec] to-[#d1c4e9] cursor-pink relative overflow-hidden">
+      {/* Logo tengah */}
       <img
         src="/logo-energi.png"
         alt="logo"
-        className="w-40 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-glow"
+        className="w-28 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-glow"
       />
 
-      {/* Ikon Desktop */}
-      <div className="absolute top-6 left-6 flex flex-wrap gap-6 z-10">
-        {/* QuickMath */}
-        <div
-          className="desktop-icon"
-          onClick={() => setActiveGame("quickmath")}
-        >
+      {/* Ikon di desktop */}
+      <div className="absolute top-6 left-6 flex gap-6 z-10">
+        <div className="desktop-icon" onClick={() => setActiveGame("quickmath")}>
           <img
             src="https://cdn-icons-png.flaticon.com/512/3303/3303893.png"
             alt="QuickMath"
           />
           <span>QuickMath</span>
         </div>
-
-        {/* CatClicker */}
         <div className="desktop-icon" onClick={() => setActiveGame("cat")}>
           <img
             src="https://cdn-icons-png.flaticon.com/512/2206/2206368.png"
@@ -50,36 +44,26 @@ export default function Desktop() {
 
       {/* Taskbar */}
       <div className="taskbar">
-        <span className="font-bold text-white">👤 {username}</span>
-        <a
-          href="https://x.com/succinct"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:underline flex items-center gap-1"
-        >
+        <span className="font-bold">👤 {username}</span>
+        <a href="https://x.com/succinct" target="_blank" rel="noopener noreferrer">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023.svg"
-            className="w-4 h-4"
             alt="X"
+            className="w-4 h-4"
           />
           Profile X
         </a>
-        <a
-          href="https://discord.gg/succinct"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:underline flex items-center gap-1"
-        >
+        <a href="https://discord.gg/succinct" target="_blank" rel="noopener noreferrer">
           <img
             src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png"
-            className="w-4 h-4"
             alt="Discord"
+            className="w-4 h-4"
           />
           Join Discord
         </a>
       </div>
 
-      {/* Game Windows */}
+      {/* Game Window */}
       {activeGame === "quickmath" && (
         <div className="game-window">
           <QuickMath onClose={() => setActiveGame(null)} />
