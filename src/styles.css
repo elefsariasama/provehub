@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @keyframes energy-glow {
   0% {
     filter: drop-shadow(0 0 0px #ff00ff);
