@@ -19,7 +19,7 @@ export default function Desktop() {
 
   return (
     <div className="w-full h-screen bg-gradient-to-br from-pink-100 to-indigo-200 cursor-pink relative overflow-hidden">
-      {/* Logo tengah dengan animasi glow */}
+      {/* Logo tengah */}
       <img
         src="/logo-energi.png"
         alt="logo"
@@ -30,59 +30,46 @@ export default function Desktop() {
       <div className="absolute top-6 left-6 flex flex-wrap gap-6 z-10">
         {/* QuickMath */}
         <div
-          className="flex flex-col items-center cursor-pointer"
+          className="desktop-icon"
           onClick={() => setActiveGame("quickmath")}
         >
           <img
             src="https://cdn-icons-png.flaticon.com/512/3303/3303893.png"
             alt="QuickMath"
-            className="w-12 h-12 hover:scale-110 transition"
           />
-          <span className="text-xs mt-1">QuickMath</span>
+          <span>QuickMath</span>
         </div>
 
         {/* CatClicker */}
-        <div
-          className="flex flex-col items-center cursor-pointer"
-          onClick={() => setActiveGame("cat")}
-        >
+        <div className="desktop-icon" onClick={() => setActiveGame("cat")}>
           <img
             src="https://cdn-icons-png.flaticon.com/512/2206/2206368.png"
             alt="CatClicker"
-            className="w-12 h-12 hover:scale-110 transition"
           />
-          <span className="text-xs mt-1">CatClicker</span>
+          <span>CatClicker</span>
         </div>
 
         {/* Flappy */}
-        <div
-          className="flex flex-col items-center cursor-pointer"
-          onClick={() => setActiveGame("flappy")}
-        >
+        <div className="desktop-icon" onClick={() => setActiveGame("flappy")}>
           <img
             src="https://cdn-icons-png.flaticon.com/512/1020/1020266.png"
             alt="Flappy"
-            className="w-12 h-12 hover:scale-110 transition"
           />
-          <span className="text-xs mt-1">Flappy</span>
+          <span>Flappy</span>
         </div>
 
         {/* Mario */}
-        <div
-          className="flex flex-col items-center cursor-pointer"
-          onClick={() => setActiveGame("mario")}
-        >
+        <div className="desktop-icon" onClick={() => setActiveGame("mario")}>
           <img
             src="https://cdn-icons-png.flaticon.com/512/999/999772.png"
             alt="Mario"
-            className="w-12 h-12 hover:scale-110 transition"
           />
-          <span className="text-xs mt-1">Mario</span>
+          <span>Mario</span>
         </div>
       </div>
 
       {/* Taskbar */}
-      <div className="absolute bottom-0 left-0 w-full flex items-center justify-center gap-6 py-3 backdrop-blur-md bg-white/10 shadow-inner text-white text-sm z-20">
+      <div className="taskbar">
         <span className="font-bold text-white">👤 {username}</span>
         <a
           href="https://x.com/succinct"
@@ -112,18 +99,26 @@ export default function Desktop() {
         </a>
       </div>
 
-      {/* Game windows */}
+      {/* Game Windows */}
       {activeGame === "quickmath" && (
-        <QuickMath onClose={() => setActiveGame(null)} />
+        <div className="game-window">
+          <QuickMath onClose={() => setActiveGame(null)} />
+        </div>
       )}
       {activeGame === "cat" && (
-        <CatClicker onClose={() => setActiveGame(null)} />
+        <div className="game-window">
+          <CatClicker onClose={() => setActiveGame(null)} />
+        </div>
       )}
       {activeGame === "flappy" && (
-        <FlappyBird onClose={() => setActiveGame(null)} />
+        <div className="game-window">
+          <FlappyBird onClose={() => setActiveGame(null)} />
+        </div>
       )}
       {activeGame === "mario" && (
-        <MiniMario onClose={() => setActiveGame(null)} />
+        <div className="game-window">
+          <MiniMario onClose={() => setActiveGame(null)} />
+        </div>
       )}
     </div>
   );
