@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* --- Custom Cursor --- */
+/* --- Cursor Pink --- */
 .cursor-pink {
   cursor: url('https://cur.cursors-4u.net/smilies/smi-9/smi880.cur'), auto;
 }
 
-/* --- Animasi Glow Logo Tengah --- */
+/* --- Glow animation --- */
 @keyframes glow {
   0% {
     filter: drop-shadow(0 0 0px hotpink);
@@ -24,7 +24,7 @@
   animation: glow 5s ease-in-out;
 }
 
-/* --- Efek Klik di Desktop --- */
+/* --- Click effect --- */
 body:active::after {
   content: "";
   position: absolute;
@@ -49,43 +49,6 @@ body:active::after {
   }
 }
 
-/* --- Game Window Style --- */
+/* --- Game Window --- */
 .game-window {
-  @apply fixed top-12 left-1/2 -translate-x-1/2 bg-white shadow-2xl rounded-lg p-6 w-[90%] max-w-2xl z-30;
-}
-
-/* --- Button Style --- */
-.btn {
-  @apply bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition;
-}
-
-/* --- Input Style --- */
-.input {
-  @apply border border-gray-300 rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-pink-400;
-}
-
-/* --- Score Text --- */
-.score-text {
-  @apply font-bold text-xl text-pink-600;
-}
-
-/* --- Timer --- */
-.timer {
-  @apply text-sm text-gray-500 mt-2;
-}
-
-/* --- Desktop Icon Styling --- */
-.desktop-icon {
-  @apply flex flex-col items-center cursor-pointer hover:scale-105 transition;
-}
-.desktop-icon img {
-  @apply w-12 h-12;
-}
-.desktop-icon span {
-  @apply text-xs mt-1;
-}
-
-/* --- Taskbar --- */
-.taskbar {
-  @apply absolute bottom-0 left-0 w-full flex items-center justify-center gap-6 py-3 backdrop-blur-md bg-white/10 shadow-inner text-white text-sm z-20;
-}
+  @apply fixed top-14 lef
