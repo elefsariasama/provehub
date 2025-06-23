@@ -1,8 +1,15 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Desktop from "./pages/Desktop";
+
 function App() {
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-100 text-xl">
-      Hello, Succinct Desktop!
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/desktop" element={<Desktop />} />
+      </Routes>
+    </Router>
   );
 }
 
