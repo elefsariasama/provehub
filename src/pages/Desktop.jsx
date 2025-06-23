@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import "../styles.css";
-import CatClicker from "../components/CatClicker";
 import QuickMath from "../components/QuickMath";
+import CatClicker from "../components/CatClicker";
+import FlappyBird from "../components/FlappyBird";
+import MiniMario from "../components/MiniMario";
 
 export default function Desktop() {
   const [username, setUsername] = useState("");
-  const [glow, setGlow] = useState(true);
   const [activeGame, setActiveGame] = useState(null);
-  const [clicks, setClicks] = useState([]);
 
   useEffect(() => {
     const stored = localStorage.getItem("username");
@@ -16,118 +15,104 @@ export default function Desktop() {
     } else {
       setUsername(stored);
     }
-
-    const timer = setTimeout(() => setGlow(false), 5000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const handleClick = (e) => {
-      const newClick = {
-        id: Date.now(),
-        x: e.clientX,
-        y: e.clientY,
-      };
-      setClicks((prev) => [...prev, newClick]);
-
-      setTimeout(() => {
-        setClicks((prev) => prev.filter((c) => c.id !== newClick.id));
-      }, 500);
-    };
-
-    window.addEventListener("click", handleClick);
-    return () => window.removeEventListener("click", handleClick);
   }, []);
 
   return (
-    <div
-      className="h-screen w-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] relative overflow-hidden text-white font-mono cursor-pink"
-    >
-      {/* Logo di tengah */}
-      <div className="flex items-center justify-center h-full pointer-events-none">
-        <img
-          src="/logo-energi.png"
-          alt="Logo Energi"
-          className={`w-52 h-52 ${glow ? "animate-glow" : ""}`}
-        />
-      </div>
+    <div className="w-full h-screen bg-gradient-to-br from-pink-100 to-indigo-200 cursor-pink relative overflow-hidden">
+      {/* Gambar tengah */}
+      <img
+        src="/8b20bf4a-b04f-4fff-918b-94bf7f8fea32.png"
+        alt="logo"
+        className="w-40 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-glow"
+      />
 
-      {/* Ikon Game: Rapi pakai grid */}
-      <div className="absolute top-8 left-8 grid grid-cols-2 gap-8">
-        {/* Cat Clicker */}
+      {/* Ikon Desktop */}
+      <div className="absolute top-6 left-6 grid grid-cols-4 gap-6 z-10">
+        {/* QuickMath */}
+        <div
+          className="flex flex-col items-center cursor-pointer"
+          onClick={() => setActiveGame("quickmath")}
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3303/3303893.png"
+            alt="QuickMath"
+            className="w-12 h-12 hover:scale-110 transition"
+          />
+          <span className="text-xs mt-1">QuickMath</span>
+        </div>
+
+        {/* CatClicker */}
         <div
           className="flex flex-col items-center cursor-pointer"
           onClick={() => setActiveGame("cat")}
         >
           <img
-            src="https://cdn-icons-png.flaticon.com/512/2203/2203187.png"
-            alt="Cat Clicker"
+            src="https://cdn-icons-png.flaticon.com/512/2206/2206368.png"
+            alt="CatClicker"
             className="w-12 h-12 hover:scale-110 transition"
           />
-          <span className="text-xs mt-1">Cat Clicker</span>
+          <span className="text-xs mt-1">CatClicker</span>
         </div>
 
-        {/* Quick Math */}
+        {/* Flappy Bird */}
         <div
           className="flex flex-col items-center cursor-pointer"
-          onClick={() => setActiveGame("math")}
+          onClick={() => setActiveGame("flappy")}
         >
           <img
-            src="https://cdn-icons-png.flaticon.com/512/1157/1157109.png"
-            alt="Quick Math"
+            src="https://cdn-icons-png.flaticon.com/512/1020/1020266.png"
+            alt="Flappy Bird"
             className="w-12 h-12 hover:scale-110 transition"
           />
-          <span className="text-xs mt-1">Quick Math</span>
+          <span className="text-xs mt-1">Flappy</span>
+        </div>
+
+        {/* Mini Mario */}
+        <div
+          className="flex flex-col items-center cursor-pointer"
+          onClick={() => setActiveGame("mario")}
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/999/999772.png"
+            alt="Mario"
+            className="w-12 h-12 hover:scale-110 transition"
+          />
+          <span className="text-xs mt-1">Mario</span>
         </div>
       </div>
 
-      {/* Game popups */}
-      {activeGame === "cat" && <CatClicker onClose={() => setActiveGame(null)} />}
-      {activeGame === "math" && <QuickMath onClose={() => setActiveGame(null)} />}
-
       {/* Taskbar */}
-      <div className="absolute bottom-0 left-0 w-full flex items-center justify-center gap-6 py-3 backdrop-blur-md bg-white/10 shadow-inner">
+      <div className="absolute bottom-0 left-0 w-full flex items-center justify-center gap-6 py-3 backdrop-blur-md bg-white/10 shadow-inner text-white text-sm z-20">
+        <span className="font-bold text-white">👤 {username}</span>
         <a
-          href="https://x.com/succinct"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:scale-110 transition"
+          href="https://x.com/succinct" target="_blank" rel="noopener noreferrer"
+          className="hover:underline flex items-center gap-1"
         >
-          <img
-            src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png"
-            alt="X"
-            className="w-7 h-7"
-          />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023.svg" className="w-4 h-4" />
+          Profile X
         </a>
         <a
-          href="https://discord.gg/succinct"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:scale-110 transition"
+          href="https://discord.gg/succinct" target="_blank" rel="noopener noreferrer"
+          className="hover:underline flex items-center gap-1"
         >
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png"
-            alt="Discord"
-            className="w-7 h-7"
-          />
+          <img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png" className="w-4 h-4" />
+          Join Discord
         </a>
-        <span className="text-white text-sm bg-black/40 px-4 py-1 rounded-full">
-          👤 {username}
-        </span>
       </div>
 
-      {/* Animasi klik */}
-      {clicks.map((click) => (
-        <span
-          key={click.id}
-          className="absolute pointer-events-none w-6 h-6 bg-pink-400 rounded-full animate-ping"
-          style={{
-            left: click.x,
-            top: click.y,
-            transform: "translate(-50%, -50%)",
-          }}
-        />
-      ))}
+      {/* Game windows */}
+      {activeGame === "quickmath" && (
+        <QuickMath onClose={() => setActiveGame(null)} />
+      )}
+      {activeGame === "cat" && (
+        <CatClicker onClose={() => setActiveGame(null)} />
+      )}
+      {activeGame === "flappy" && (
+        <FlappyBird onClose={() => setActiveGame(null)} />
+      )}
+      {activeGame === "mario" && (
+        <MiniMario onClose={() => setActiveGame(null)} />
+      )}
     </div>
   );
 }
