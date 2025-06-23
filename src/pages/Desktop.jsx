@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "../styles.css";
-import CatClicker from "../components/CatClicker";
+import "../styles.css"; // animasi glow logo
+import CatClicker from "../components/CatClicker"; // game
 
 export default function Desktop() {
   const [username, setUsername] = useState("");
@@ -21,7 +21,7 @@ export default function Desktop() {
 
   return (
     <div className="h-screen w-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] relative overflow-hidden text-white font-mono">
-      {/* Gambar tengah */}
+      {/* Logo utama di tengah */}
       <div className="flex items-center justify-center h-full">
         <img
           src="/logo-energi.png"
@@ -30,8 +30,11 @@ export default function Desktop() {
         />
       </div>
 
-      {/* Ikon Game */}
-      <div className="absolute top-8 left-8 flex flex-col items-center cursor-pointer" onClick={() => setShowGame(true)}>
+      {/* Ikon game di desktop */}
+      <div
+        className="absolute top-8 left-8 flex flex-col items-center cursor-pointer"
+        onClick={() => setShowGame(true)}
+      >
         <img
           src="https://cdn-icons-png.flaticon.com/512/2203/2203187.png"
           alt="Cat Clicker"
@@ -40,11 +43,12 @@ export default function Desktop() {
         <span className="text-xs mt-1 text-white drop-shadow-md">Cat Clicker</span>
       </div>
 
-      {/* Game popup */}
+      {/* Pop-up game */}
       {showGame && <CatClicker onClose={() => setShowGame(false)} />}
 
-      {/* Taskbar */}
+      {/* Taskbar (dock) */}
       <div className="absolute bottom-0 left-0 w-full flex items-center justify-center gap-6 py-3 backdrop-blur-md bg-white/10 shadow-inner">
+        {/* Link X */}
         <a
           href="https://x.com/succinct"
           target="_blank"
@@ -55,3 +59,28 @@ export default function Desktop() {
             src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png"
             alt="X"
             className="w-7 h-7"
+          />
+        </a>
+
+        {/* Link Discord */}
+        <a
+          href="https://discord.gg/succinct"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:scale-110 transition"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png"
+            alt="Discord"
+            className="w-7 h-7"
+          />
+        </a>
+
+        {/* Username */}
+        <span className="text-white text-sm bg-black/40 px-4 py-1 rounded-full">
+          👤 {username}
+        </span>
+      </div>
+    </div>
+  );
+}
