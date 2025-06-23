@@ -1,0 +1,18 @@
+@keyframes energy-glow {
+  0% {
+    filter: drop-shadow(0 0 0px #ff00ff);
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px #ff00ff);
+    transform: scale(1.05);
+  }
+  100% {
+    filter: drop-shadow(0 0 0px #ff00ff);
+    transform: scale(1);
+  }
+}
+
+.animate-glow {
+  animation: energy-glow 1s ease-in-out infinite;
+}
