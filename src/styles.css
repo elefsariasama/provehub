@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* --- Cursor Pink --- */
+/* --- Custom Cursor --- */
 .cursor-pink {
   cursor: url('https://cur.cursors-4u.net/smilies/smi-9/smi880.cur'), auto;
 }
 
-/* --- Glow animation --- */
+/* --- Animasi Glow Logo Tengah --- */
 @keyframes glow {
   0% {
     filter: drop-shadow(0 0 0px hotpink);
@@ -24,7 +24,7 @@
   animation: glow 5s ease-in-out;
 }
 
-/* --- Click effect --- */
+/* --- Efek Klik --- */
 body:active::after {
   content: "";
   position: absolute;
@@ -49,6 +49,23 @@ body:active::after {
   }
 }
 
-/* --- Game Window --- */
+/* --- Game Window Style --- */
 .game-window {
-  @apply fixed top-14 lef
+  @apply fixed top-14 left-1/2 -translate-x-1/2 w-[90%] max-w-3xl h-[75%] bg-white rounded-xl p-6 shadow-xl z-30 overflow-auto;
+}
+
+/* --- Desktop Icons --- */
+.desktop-icon {
+  @apply flex flex-col items-center cursor-pointer hover:scale-105 transition;
+}
+.desktop-icon img {
+  @apply w-12 h-12;
+}
+.desktop-icon span {
+  @apply text-xs mt-1 text-black;
+}
+
+/* --- Taskbar --- */
+.taskbar {
+  @apply absolute bottom-0 left-0 w-full flex items-center justify-center gap-6 py-3 backdrop-blur-md bg-white/10 shadow-inner text-white text-sm z-20;
+}
